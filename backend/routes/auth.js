@@ -16,5 +16,5 @@ router.post('/',
   
     res.send({ errors: result.array() });
 
-})
+}) 
 module.exports = router 
