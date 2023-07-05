@@ -4,8 +4,9 @@ const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
+const fetchuser = require("../middleware/fetchuser");
 
-const jwtSecret = "let$g0Ye@!H";
+const jwtSecret = `${process.env.JWT_SECRET_KEY}`;
 
 //Route 1 : Create a User using: POST "/api/auth/createuser". Doesn't require Auth(login).
 
@@ -104,17 +105,16 @@ router.post(
 
 
 
-//Route 1 : Create a User using: POST "/api/auth/getuser". require Auth(login).
+//Route 3 : Get a User using: POST "/api/auth/getuser". require Auth(login).
 router.post(
-    "/getuser",
-    body("email").isEmail().withMessage("Not a valid e-mail address"),
-    body("password").notEmpty().withMessage("password cannot be blank"),
+    "/getuser", fetchuser,
     async (req, res) => {
-      const result = validationResult(req);
+
       
 try {
-    userId = "tksja"
+    userId = req.user.id;
     const user = await User.findById(userId).select("-password")
+    res.send(user)
 } catch (error) {
     console.error(error.message);
       res.status(500).send("Error: check console for details");
