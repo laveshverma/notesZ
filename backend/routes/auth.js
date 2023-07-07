@@ -75,7 +75,9 @@ router.post(
     const result = validationResult(req);
 
     try {
-      if (result.isEmpty()) {
+      if (!result.isEmpty()) {
+        res.send({ errors: result.array() });
+      } else {
         const { email, password } = req.body;
 
         let user = await User.findOne({ email });
@@ -93,8 +95,6 @@ router.post(
         };
         const authtoken = jwt.sign(data, jwtSecret);
         res.json({ authtoken });
-      } else {
-        res.send({ errors: result.array() });
       }
     } catch (error) {
       console.error(error.message);
