@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
 
+import Notes from "./Notes";
 function home() {
+
+  
+
   return (
-    <div>this is NOtesZ</div>
-  )
+    <div>
+     
+    <Notes/>
+    </div>
+  );
 }
 
-export default home
+export default home;
