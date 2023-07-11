@@ -1,5 +1,7 @@
 import NoteContext from "./noteContext"; 
 import {useState} from "react";
+
+
 const NoteState=(props)=> {
     const host = "http://localhost:5000"
     const notesInitial=[]
@@ -38,17 +40,7 @@ const NoteState=(props)=> {
         body: JSON.stringify({title,description,tag}), 
       });
       const json = await response.json();
-      // console.log(json);
-
-      // const note={
-      //   "_id": "64a70a3e024be62589174b78c",
-      //   "user": "64a6bb152b6f01b141cfa49e",
-      //   "title": title,
-      //   "description": description,
-      //   "tag": tag,
-      //   "date": "2023-07-06T18:38:54.254Z",
-      //   "__v": 0
-      // }
+   
       setNotes(notes.concat(json))
     }
     //Delete a note
@@ -65,7 +57,7 @@ const NoteState=(props)=> {
        
       });
       const json = await response.json();
-      console.log(json);
+     
      const newNotes = notes.filter((note)=>{return note._id!==id});
       setNotes(newNotes);
     }
@@ -86,7 +78,7 @@ const NoteState=(props)=> {
         body: JSON.stringify({title,description,tag}), 
       });
       const json = await response.json();
-      console.log(json)
+     
       let newNotes = JSON.parse(JSON.stringify(notes))
       //edit in client
       for (let index = 0; index < notes.length; index++) {

@@ -23,7 +23,7 @@ router.post(
   async (req, res) => {
     //  Check If everything is alright
     const result = validationResult(req);
-
+    let success=false;
     try {
       if (result.isEmpty()) {
         // if everything alright
@@ -32,7 +32,7 @@ router.post(
         if (user) {
           return res
             .status(400)
-            .json({ error: "A user with this email aready exists" });
+            .json({ success,error: "A user with this email aready exists" });
         }
 
         // encrypt password using bcrypt
@@ -53,15 +53,17 @@ router.post(
         const authtoken = jwt.sign(data, jwtSecret);
 
         //res.json(user);
-        res.json({ authtoken });
+        success= true;
+        res.json({ success, authtoken });
       }
       //errors on validation
       else {
-        res.send({ errors: result.array() });
+       
+        res.send({success, errors: result.array() });
       }
     } catch (error) {
       console.error(error.message);
-      res.status(500).send("Error: check console for details");
+      res.status(500).send({success,Error: "check console for details"});
     }
   }
 );
@@ -73,7 +75,7 @@ router.post(
   body("password").notEmpty().withMessage("password cannot be blank"),
   async (req, res) => {
     const result = validationResult(req);
-
+    let success=false;
     try {
       if (!result.isEmpty()) {
         res.send({ errors: result.array() });
@@ -82,11 +84,11 @@ router.post(
 
         let user = await User.findOne({ email });
         if (!user) {
-          return res.status(400).json({ error: "Invalid credentials" });
+          return res.status(400).json({success, error: "Invalid credentials" });
         }
         const passwordCompare = await bcrypt.compare(password, user.password);
         if (!passwordCompare) {
-          return res.status(400).json({ error: "Invalid credentials" });
+          return res.status(400).json({ success, error: "Invalid credentials" });
         }
         const data = {
           user: {
@@ -94,11 +96,12 @@ router.post(
           },
         };
         const authtoken = jwt.sign(data, jwtSecret);
-        res.json({ authtoken });
+        success= true;
+        res.json({success, authtoken });
       }
     } catch (error) {
       console.error(error.message);
-      res.status(500).send("Error: check console for details");
+      res.status(500).send({success,Error: "check console for details"});
     }
   }
 );
@@ -109,15 +112,15 @@ router.post(
 router.post(
     "/getuser", fetchuser,
     async (req, res) => {
-
+      let success=false;
       
 try {
     userId = req.user.id;
     const user = await User.findById(userId).select("-password")
-    res.send(user)
+    res.send({success,user})
 } catch (error) {
     console.error(error.message);
-      res.status(500).send("Error: check console for details");
+      res.status(500).send({success,Error: "check console for details"});
 }
 
 }
