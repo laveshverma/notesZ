@@ -1,14 +1,14 @@
 import React from "react";
 
 import Notes from "./Notes";
-function home() {
+function home(props) {
 
   
 
   return (
     <div>
      
-    <Notes/>
+    <Notes showAlert={props.showAlert} />
     </div>
   );
 }
