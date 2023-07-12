@@ -34,7 +34,9 @@ function SignUp(props) {
     setCredentials({...credentials,[e.target.name]:e.target.value}) 
 }
   return (
-    <div className='container'>
+    <div className='container mt-3'>
+
+    <h2>Create an Account for NotesZ </h2>
       <form onSubmit={handleSubmit}>
      
       <div className="mb-3">
@@ -58,7 +60,7 @@ function SignUp(props) {
     <input type="password" className="form-control" id="cpassword" name='cpassword' value={credentials.cpassword} onChange={onChange}/>
   </div>
 
-  <button type="submit" className="btn btn-primary" >Submit</button>
+  <button type="submit" className="btn btn-primary" >Create Account</button>
 </form>
 
     </div>

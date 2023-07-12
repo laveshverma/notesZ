@@ -34,7 +34,8 @@ function Login(props) {
         setCredentials({...credentials,[e.target.name]:e.target.value}) 
     }
   return (
-    <>
+    <div className='container mt-3'>
+    <h2>Login to continue to NotesZ</h2>
 <form onSubmit={handleSubmit}>
   <div className="mb-3">
     <label htmlFor="email" className="form-label">Email address</label>
@@ -46,9 +47,9 @@ function Login(props) {
     <input type="password" className="form-control" value={credentials.password}id="password"  name= "password"   onChange={onChange}/>
   </div>
 
-  <button type="submit" className="btn btn-primary" >Submit</button>
+  <button type="submit" className="btn btn-primary" >Login</button>
 </form>
-    </>
+    </div>
   )
 }
 
