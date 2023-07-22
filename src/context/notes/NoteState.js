@@ -3,7 +3,7 @@ import {useState} from "react";
 
 
 const NoteState=(props)=> {
-    const host = "http://localhost:5000"
+    const host = "https://tame-cyan-scarab-cape.cyclic.app"
     const notesInitial=[]
 
     const [notes,setNotes] = useState(notesInitial)

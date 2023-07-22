@@ -1,7 +1,7 @@
 import React, {useState}from 'react'
 import {useNavigate} from 'react-router-dom';
 
-const host = "http://localhost:5000"
+const host = "https://tame-cyan-scarab-cape.cyclic.app"
 function Login(props) {
     const [credentials, setCredentials] = useState({email:"", password:""});
    let navigate = useNavigate();
