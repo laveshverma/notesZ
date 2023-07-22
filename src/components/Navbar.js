@@ -39,7 +39,7 @@ const Navbar = () => {
 
       <Link className="btn btn-outline-dark mx-2"  to="/signup" role="button">SignUp</Link>
 
-      </form>: <button onClick={handleLogout} className="btn-outline-primary">LogOut</button>
+      </form>: <button onClick={handleLogout} className="btn btn-outline-primary">LogOut</button>
 
   }
     </div>
