@@ -1,7 +1,7 @@
 import React, {useState}from 'react'
 import {useNavigate} from 'react-router-dom';
 
-const host = "https://tame-cyan-scarab-cape.cyclic.app"
+const host = "https://enchanting-hen-cowboy-boots.cyclic.app"
 function Login(props) {
     const [credentials, setCredentials] = useState({email:"", password:""});
    let navigate = useNavigate();
