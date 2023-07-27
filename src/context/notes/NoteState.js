@@ -3,7 +3,8 @@ import {useState} from "react";
 
 
 const NoteState=(props)=> {
-    const host = "https://tame-cyan-scarab-cape.cyclic.app"
+   //const host = "http://localhost:5000"
+    const host = "https://notesz-backend.onrender.com"
     const notesInitial=[]
 
     const [notes,setNotes] = useState(notesInitial)
@@ -33,7 +34,7 @@ const NoteState=(props)=> {
     
         headers: {
           "Content-Type": "application/json",
-          "auth-token":"localStorage.getItem('token')"
+          "auth-token":localStorage.getItem('token')
     
         },
        
@@ -50,8 +51,8 @@ const NoteState=(props)=> {
         method: "DELETE", 
     
         headers: {
-          
-          "auth-token":"localStorage.getItem('token')"
+        
+          "auth-token":localStorage.getItem('token')
     
         },
        
@@ -72,7 +73,7 @@ const NoteState=(props)=> {
     
         headers: {
           "Content-Type": "application/json",
-          "auth-token":"localStorage.getItem('token')"
+          "auth-token":localStorage.getItem('token')
     
         },
        
