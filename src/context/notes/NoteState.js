@@ -3,7 +3,9 @@ import {useState} from "react";
 
 
 const NoteState=(props)=> {
-    const host = "https://notesz-backend.onrender.com"
+ 
+//const host = "http://localhost:5000"
+const host = "https://notesz-backend.onrender.com"
     const notesInitial=[]
 
     const [notes,setNotes] = useState(notesInitial)
@@ -33,7 +35,7 @@ const NoteState=(props)=> {
     
         headers: {
           "Content-Type": "application/json",
-          "auth-token":"localStorage.getItem('token')"
+          "auth-token":localStorage.getItem('token')
     
         },
        
@@ -51,7 +53,7 @@ const NoteState=(props)=> {
     
         headers: {
           
-          "auth-token":"localStorage.getItem('token')"
+          "auth-token":localStorage.getItem('token')
     
         },
        
@@ -72,7 +74,7 @@ const NoteState=(props)=> {
     
         headers: {
           "Content-Type": "application/json",
-          "auth-token":"localStorage.getItem('token')"
+          "auth-token":localStorage.getItem('token')
     
         },
        
